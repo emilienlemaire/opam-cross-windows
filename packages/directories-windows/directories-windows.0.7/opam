@@ -11,7 +11,8 @@ bug-reports: "https://github.com/ocamlpro/directories/issues"
 depends: [
   "dune" {>= "2.1"}
   "ocaml-windows" {>= "4.14.0"}
-  "ctypes-windows" {>= "0.17.1" & (os = "win32" | os = "cygwin")}
+  "ctypes" {>= "0.17.1"}
+  "ctypes-windows" {>= "0.17.1"}
   "fpath-windows"
 ]
 build: [
@@ -29,6 +30,15 @@ build: [
     "@runtest" {with-test}
     "@doc" {with-doc}
   ]
+]
+extra-files: [
+  [
+    "patches/fix-windows-dune.patch"
+    "md5=9575ee0af24116655fb1272d2322ec51"
+  ]
+]
+patches: [
+  "patches/fix-windows-dune.patch"
 ]
 dev-repo: "git+https://github.com/ocamlpro/directories.git"
 x-maintenance-intent: ["(latest)"]
