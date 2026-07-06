@@ -1,0 +1,29 @@
+diff --git a/src/windows/bindings/dune b/src/windows/bindings/dune
+index 8260ba3..0172b3b 100755
+--- a/src/windows/bindings/dune
++++ b/src/windows/bindings/dune
+@@ -1,18 +1,3 @@
+-(* -*- tuareg -*- *)
+-
+-open Jbuild_plugin.V1
+-
+-let is_windows =
+-  match List.assoc "os_type" ocamlc_config with
+-  | "Win32" -> true
+-  | _os -> false
+-
+-let () =
+-  if not is_windows then
+-    Printf.ksprintf send ""
+-  else
+-    Printf.ksprintf send "%s"
+-    {|
+ 
+ (library
+  (name win_types)
+@@ -51,5 +36,3 @@ let () =
+  (foreign_stubs (language c) (names win_functions_c_stubs))
+  (c_library_flags (:standard -lkernel32 -lshell32))
+  (wrapped false))
+-
+-|}
